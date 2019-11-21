@@ -1,34 +1,30 @@
+import dict_repr as board_repr
+
 ## Represent the opponents (and their checkers etc.) with
 ## numbers, because we represent everything with numbers.
-RED = 0
-BLACK = 1
+RED = board_repr.RED
+BLACK = board_repr.BLACK
 
 ## We have to decide in which direction each opponent will proceed.
-RED_HOME = 0
+RED_HOME = board_repr.RED_HOME
 
 def new_board():
-    return {
-        "points_number": [2, 0, 0, 0, 0, 5,
-                 0, 3, 0, 0, 0, 5,
-                 5, 0, 0, 0, 3, 0,
-                 5, 0, 0, 0, 0, 2],
-        "points_colour": [BLACK, 0, 0, 0, 0, RED,
-                 0, RED, 0, 0, 0, BLACK,
-                 RED, 0, 0, 0, BLACK, 0,
-                 BLACK, 0, 0, 0, 0, RED],
-        "bar": [0, 0],
-        "out": [0, 0]
-        }
+    return board_repr.new_board()
+
+def ask_player_and_move( board, next_player, die1, die2 ):
+    ## missing:
+    pass
+
+def opponent( player ):
+    return board_repr.opponent( player )
+
+def game_over( board ):
+    return board_repr.game_over( board )
 
 ## Strings for drawing the board:
 colours = ["", ""]
 colours[RED] = "R"
 colours[BLACK] = "B"
-
-## missing: procedure draw_board( board )
-
-## missing: ask_player_and_move( board, next_player, die1, die2 )
-
 
 ################
 ## Board printing
@@ -41,7 +37,8 @@ colours[BLACK] = "B"
 ## the point.  The first character will be non-space only
 ## if the point contains more than 9 checkers.
 
-def print_point( checkers, colour_string ):
+def print_point( checkers, colour ):
+    colour_string = colours[colour]
     if checkers == 0:
         print( " 0 ", end="" )
     elif checkers < 10:         # one-digit number
@@ -56,7 +53,7 @@ def print_point( checkers, colour_string ):
 ## lines, containing two points each (so we
 ## rotate the usual view of the board by 90 degrees).
 
-def draw_board( points_number, points_colour ):
+def draw_board( board ):
     ## Number of spaces between the two columns
     ## ("column separator"):
     column_sep = "        "
@@ -64,13 +61,11 @@ def draw_board( points_number, points_colour ):
     for i in range( 12 ):
         ## Number of checkers at the two points
         ## in this row:
-        checkers1 = points_number[11 - i]
-        checkers2 = points_number[12 + i]
-        print_point( checkers1, colours[points_colour[11 - i]] )
+        checkers1 = board_repr.number_of_pieces( board, 11 - i )
+        checkers2 = board_repr.number_of_pieces( board, 12 + i )
+        print_point( checkers1, board_repr.colour( board, 11 - i ) )
         print( column_sep, end="" )
-        print_point( checkers2, colours[points_colour[12 + i]] )
+        print_point( checkers2, board_repr.colour( board, 12 + i ) )
         ## Don't forget the newline at the end of each line:
         print()
 
-## Print board:
-draw_board( points_number, points_colour )

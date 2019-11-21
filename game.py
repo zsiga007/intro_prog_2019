@@ -1,4 +1,4 @@
-import board_util  # missing module
+import board_util
 import random
 
 def game_loop():
@@ -13,3 +13,5 @@ def game_loop():
         next_player = board_util.opponent( next_player )
         if board_util.game_over( board ):
             game_over = True
+
+game_loop()
