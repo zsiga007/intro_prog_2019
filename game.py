@@ -14,4 +14,3 @@ def game_loop():
         if board_util.game_over( board ):
             game_over = True
 
-game_loop()
