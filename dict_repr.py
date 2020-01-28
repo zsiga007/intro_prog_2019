@@ -16,7 +16,14 @@ def new_board():
                           RED, 0, 0, 0, BLACK, 0,
                           BLACK, 0, 0, 0, 0, RED],
         "bar": [0, 0],
-        "out": [0, 0]
+        "out": [0, 0],
+        ## We can even hold 15 element lists by players,
+        ## with -1 representing the bar, and 24 representing
+        ## beared off:
+        "black_points": [0, 0, 11, 11, 11, 11, 11,
+                         16, 16, 16, 18, 18, 18, 18, 18],
+        "red_points": [23, 23, 12, 12, 12, 12, 12,
+                       7, 7, 7, 5, 5, 5, 5, 5],
     }
 
 def number_of_pieces( board, point ):
