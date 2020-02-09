@@ -1,5 +1,6 @@
 RED = 0
 BLACK = 1
+NO_COLOUR = -1
 RED_HOME = 0
 
 def opponent( player ):
@@ -11,10 +12,10 @@ def new_board():
                           0, 3, 0, 0, 0, 5,
                           5, 0, 0, 0, 3, 0,
                           5, 0, 0, 0, 0, 2],
-        "points_colour": [BLACK, 0, 0, 0, 0, RED,
-                          0, RED, 0, 0, 0, BLACK,
-                          RED, 0, 0, 0, BLACK, 0,
-                          BLACK, 0, 0, 0, 0, RED],
+        "points_colour": [BLACK, NO_COLOUR, NO_COLOUR, NO_COLOUR, NO_COLOUR, RED,
+                          NO_COLOUR, RED, NO_COLOUR, NO_COLOUR, NO_COLOUR, BLACK,
+                          RED, NO_COLOUR, NO_COLOUR, NO_COLOUR, BLACK, NO_COLOUR,
+                          BLACK, NO_COLOUR, NO_COLOUR, NO_COLOUR, NO_COLOUR, RED],
         "bar": [0, 0],
         "out": [0, 0],
         ## We can even hold 15 element lists by players,
