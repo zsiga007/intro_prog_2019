@@ -24,6 +24,14 @@ def move( board, player, fromPoint, toPoint ):
     The `board` gets modified!
     """
 
+def possible_moves( board, player, die ):
+    """
+    Return a list of alternative moves that this player can make
+    on this board with this die rolled.
+    """
+    ## temporary:
+    return []
+
 ## This is the hardest one:
 def legitimate_moves( board, player, die1, die2 ):
     """
