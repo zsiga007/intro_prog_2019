@@ -25,3 +25,20 @@ def game_over( board ):
 def draw_board( board ):
     draw.draw_board( board )
 
+def is_move_possible( board, player, fromPoint, toPoint ):
+    """
+    Checks if a given move is legitimate
+    (only makes sure that there is no checker waiting on the bar
+    (unless the move is from the bar), and that the target point 
+    contains `player`'s checkers, no checker or exactly one of
+    opponent's checkers.
+    """
+    if not board_repr.has_checker( player, board, fromPoint ):
+        return False
+    if board_repr.has_checkers_on_bar( player, board ):
+        if not fromPoint == board_repr.BAR:
+            return False
+    
+    ## temporary:
+    return True
+

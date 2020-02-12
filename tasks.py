@@ -18,12 +18,6 @@ def is_move_possible( board, player, fromPoint, toPoint ):
     ## temporary:
     return True
 
-def move( board, player, fromPoint, toPoint ):
-    """
-    Assuming that the move is legitimate, actually carry it out.
-    The `board` gets modified!
-    """
-
 def possible_moves( board, player, die ):
     """
     Return a list of alternative moves that this player can make

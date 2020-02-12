@@ -2,6 +2,8 @@ RED = 0
 BLACK = 1
 NO_COLOUR = -1
 RED_HOME = 0
+BAR = -1
+OUT = 24
 
 def opponent( player ):
     return ( player + 1 ) % 2
@@ -35,3 +37,16 @@ def colour( board, point ):
 
 def game_over( board ):
     return ( board["out"][0] == 15 ) or ( board["out"][1] == 15 )
+
+def move( board, player, fromPoint, toPoint ):
+    """
+    Assuming that the move is legitimate, actually carry it out.
+    The `board` gets modified!
+    """
+
+def has_checker( player, board, fromPoint ):
+    #temporary:
+    return False
+def has_checkers_on_bar( player, board ):
+    # temporary:
+    return False
