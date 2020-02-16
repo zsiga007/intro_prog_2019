@@ -14,3 +14,8 @@ def game_loop():
         if board_util.game_over( board ):
             game_over = True
 
+def ask_player_and_move( board, next_player, die1, die2 ):
+    """
+    function for asking the player and converting their answer to moves
+    """
+    

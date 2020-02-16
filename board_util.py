@@ -13,7 +13,27 @@ def new_board():
     return board_repr.new_board()
 
 def ask_player_and_move( board, next_player, die1, die2 ):
-    ## missing:
+    ## function for asking the player and converting their answer to moves I complete the move function in dict_repr;
+    l=[die1,die2,die1+die2]
+    if die1!=die2: ##this is just a hand-crafted method for the simpler method used below at die1==die2, but this maybe used in another function...
+        for i in range(1):
+            fromPoint=input('Which checker to move? ')
+            toPoint=input('Where to move? ')
+            a=abs(fromPoint-toPoint)
+            while a in l and len(l)>1:
+                if a==die1:
+                    del l[-3]
+                if a==die2:
+                    del l[-2]
+                if a==die1+die2:
+                    del l[-1]
+                if is_move_possible( board, next_player, fromPoint, toPoint )==True:
+                    move( board, next_player, fromPoint, toPoint )
+    if die1==die2:
+        i=input()
+        if len(legitimate_moves( board, next_player, die1, die2 )[i])==4: ##assuring that they select a sequence which is 4 long, so double moves are not distincted
+            for j in range(3): ## this will execute the 4 moves included in the sub-list
+                move( board, next_player, legitimate_moves( board, next_player, die1, die2 )[i][j][0], legitimate_moves( board, next_player, die1, die2 )[i][j][1] )##we assume that legitimate_moves is a list including lists of two long lists which represent the start and endpoints of a step        
     pass
 
 def opponent( player ):

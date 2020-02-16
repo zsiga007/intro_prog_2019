@@ -38,15 +38,25 @@ def colour( board, point ):
 def game_over( board ):
     return ( board["out"][0] == 15 ) or ( board["out"][1] == 15 )
 
-def move( board, player, fromPoint, toPoint ):
+def move( board, player, fromPoint, toPoint ): #assume that the labels of points run from 0 to 23
     """
     Assuming that the move is legitimate, actually carry it out.
     The `board` gets modified!
     """
+    if board["points_number"][fromPoint]==1:## I later realised we had a function for colour...
+        board["points_colour"][fromPoint]='NO_COLOUR'
+    if board["points_number"][toPoint]<=1:
+        board["points_colour"][toPoint]=player
+    board["points_number"][fromPoint]=board["points_number"][fromPoint]-1
+    board["points_number"][toPoint]=board["points_number"][toPoint]+1
 
 def has_checker( player, board, fromPoint ):
     #temporary:
-    return False
-def has_checkers_on_bar( player, board ):
-    # temporary:
-    return False
+    if board["points_colour"][fromPoint]==player:
+        return True
+def has_checkers_on_bar( player, board ):## on these bars player has checkers
+    checkerlist=[]
+    for i in range(24):
+        if board["points_colour"][i]==player:
+            checkerlist.append(i)
+    return checkerlist

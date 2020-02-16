@@ -15,7 +15,7 @@ def is_move_possible( board, player, fromPoint, toPoint ):
     contains `player`'s checkers, no checker or exactly one of
     opponent's checkers.
     """
-    ## temporary:
+    ## temporary
     return True
 
 def possible_moves( board, player, die ):
